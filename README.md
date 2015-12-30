@@ -22,9 +22,17 @@
 ```
 
 ## 简单原理
-<math>\begin{bmatrix} w_1 \\ w_2 \end{bmatrix} :=
-    \begin{bmatrix} w_1 \\ w_2 \end{bmatrix}
-    -  \eta  \begin{bmatrix} 2 (w_1 + w_2 x_i - y_i) \\ 2 x_i(w_1 + w_2 x_i - y_i) \end{bmatrix}.</math>
+### 矩阵方法
+#### QR分解
+- QR分解，即将矩阵A分解为Q和R，使得A=QR
+- 对于矩阵化的方程`AX = b`, 最小二乘法即`min||AX-b|| = min||QRX - b||`，令其等于0，则有`X = R^(-1)Q^T*b`
+
+### 随机梯度下降算法
+- 在对于方程`y = w0 + w1 * x1 + w2 * x2 + w3 * x3 `，我们的目标方程为`Q(w) = SUM(w0 + w1 * x1 + w2 * x2 + w3 * x3 - y)^2`，使目标方程值最小
+- 对每一个系数wi，将目标方程求导数，令f = w0 + w1 * x1 + w2 * x2 + w3 * x3 - y，则求导之后的结果为2xi*f
+- 对于梯度下降算法，每次迭代，系数的改变量为学习速率×斜率（导数）
+- 因此，令y_error = w0 + w1 * x1 + w2 * x2 + w3 * x3 - y, 每一次迭代w的改变量为`w_delta = alpha*y_error*x[j] `(main.py, line 36), 其中alpha为学习速率
+
 
 ## 计算结果
 - 矩阵方法拟合的结果为：
