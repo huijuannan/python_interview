@@ -51,3 +51,7 @@ w0 = np.linalg.det(W0)/np.linalg.det(Y)
 w1 = np.linalg.det(W1)/np.linalg.det(Y)
 w2 = np.linalg.det(W2)/np.linalg.det(Y)
 w3 = np.linalg.det(W3)/np.linalg.det(Y)
+
+print 'function: y = w0 + w1 * x1 + w2 * x2 + w3 * x3'
+print "Solution with Cramer's rule:"
+print 'w0={0:03.3f}, w1={1:03.3f}, w2 = {2:03.3f}, w3 = {3:03.3f}'.format(*[w0, w1, w2, w3])
